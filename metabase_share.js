@@ -1,9 +1,10 @@
-function syncMetabaseCardToSheet(cardId, destinationSheetName) {
+function syncMetabaseCardToSheet() {
   const props = PropertiesService.getScriptProperties();
 
   const METABASE_URL = props.getProperty("METABASE_URL");
   const METABASE_API_KEY = props.getProperty("METABASE_API_KEY");
-   const METABASE_CARD_ID = props.getProperty("METABASE_CARD_ID");
+  const METABASE_CARD_ID = props.getProperty("METABASE_CARD_ID");
+  const SHEET_NAME = props.getProperty("SHEET_NAME");
 
   const response = UrlFetchApp.fetch(
     `${METABASE_URL}api/card/${METABASE_CARD_ID}/query/json`,
@@ -31,8 +32,8 @@ function syncMetabaseCardToSheet(cardId, destinationSheetName) {
   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
 
   const sheet =
-    spreadsheet.getSheetByName(destinationSheetName) ||
-    spreadsheet.insertSheet(destinationSheetName);
+    spreadsheet.getSheetByName(SHEET_NAME) ||
+    spreadsheet.insertSheet(SHEET_NAME);
 
   sheet.clearContents();
 
