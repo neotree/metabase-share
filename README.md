@@ -218,7 +218,11 @@ Site B → METABASE_CARD_ID = 102
 Site C → METABASE_CARD_ID = 103
 Site D → METABASE_CARD_ID = 104
 ```
-
+##### Property 4
+```text
+name: SHEET_NAME
+value: CPH Unmatched Log
+```
 ## 9. How to run the sync manually
 
 In the Apps Script editor:
